@@ -1,0 +1,7 @@
+python -m venv nombre-del-entorno
+nombre-del-entorno\Scripts\activate
+pip install django
+django-admin startproject nombre-del-proyecto
+cd myproject
+python manage.py runserver
+deactivate
