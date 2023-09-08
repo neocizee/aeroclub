@@ -1,3 +1,4 @@
 easy python: https://www.youtube.com/watch?v=fabelAs_m08
 listas, disccionarios py: https://www.youtube.com/watch?v=mMtCODRYpkI
 curso principiante django: https://www.youtube.com/watch?v=T1intZyhXDU
+jacaranda.ws
