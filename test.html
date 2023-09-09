@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,18 +13,21 @@
             font-family: Arial, sans-serif;
             overflow: hidden;
         }
+        
         .carousel-container {
             width: 100%;
             height: 100vh;
             overflow: hidden;
             background-color
         }
+        
         .carousel {
             width: 100%;
             display: flex;
             flex-direction: column;
             RE
         }
+        
         .carousel-section {
             width: 100%;
             height: 100vh;
@@ -33,19 +37,25 @@
             font-size: 2em;
             background-color: #727272;
         }
+        
         .carousel-indicators {
             position: fixed;
             top: 50%;
-            right: 2%; /* Ajusta el espacio desde el borde derecho */
-            transform: translateY(-50%); /* Centra verticalmente */
+            right: 2%;
+            /* Ajusta el espacio desde el borde derecho */
+            transform: translateY(-50%);
+            /* Centra verticalmente */
             display: flex;
-            flex-direction: column; /* Muestra los indicadores en columna */
+            flex-direction: column;
+            /* Muestra los indicadores en columna */
             align-items: center;
         }
+        
         .indicator {
             width: 60px;
             height: 60px;
-            margin: 5px 0; /* Ajusta el espacio vertical entre los indicadores */
+            margin: 5px 0;
+            /* Ajusta el espacio vertical entre los indicadores */
             background-color: transparent;
             border: 0.5px solid rgba(255, 255, 255, 0.6);
             border-radius: 50%;
@@ -55,55 +65,61 @@
             justify-content: center;
             transition: background-color 0.3s, border-color 0.3s;
         }
+        
         .indicator i {
             font-size: 1.5em;
             color: transparent;
             transition: color 0.3s;
         }
+        
         .indicator.selected {
             width: 90px;
             height: 90px;
             background-color: transparent;
             border-color: white;
         }
+        
         .indicator.selected i {
             color: #fff;
         }
-
-
-.header {
-    display: flex;
-    justify-content: space-between; /* Distribuye el contenido en ambos lados */
-    align-items: center; /* Centra verticalmente */
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 999; /* Asegura que el header esté por encima de otros elementos */
-
-}
-.header-buttons {
-    display: flex;
-}
-
-.header-button {
-    background-color: #fff;
-    color: #333;
-    border: none;
-    padding: 10px 20px;
-    margin-left: 10px;
-    cursor: pointer;
-}
-
-.header-button:hover {
-    background-color: #ddd;
-}
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            /* Distribuye el contenido en ambos lados */
+            align-items: center;
+            /* Centra verticalmente */
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            /* Asegura que el header esté por encima de otros elementos */
+        }
+        
+        .header-buttons {
+            display: flex;
+        }
+        
+        .header-button {
+            background-color: #fff;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        
+        .header-button:hover {
+            background-color: #ddd;
+        }
     </style>
 </head>
+
 <body>
     <div class="header">
         <h1>aeroclub</h1>
@@ -121,10 +137,10 @@
             <div class="carousel-section">Eventos</div>
             <div class="carousel-section">Galeria</div>
             <div class="carousel-section">Acerca / Contactos / Ubicacion</div>
-            
+
         </div>
     </div>
-    
+
     <div class="carousel-indicators">
         <div class="indicator selected">
             <svg xmlns="http://www.w3.org/2000/svg" width="50%" height="50%" fill="white" class="bi bi-house" viewBox="0 0 16 16">
@@ -205,4 +221,5 @@
         updateIndicators();
     </script>
 </body>
+
 </html>

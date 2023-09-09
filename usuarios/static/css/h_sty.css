@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.carousel-container {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.carousel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel-section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    color: white;
+    background-color: #000000;
+}
+
+.carousel-indicators {
+    position: fixed;
+    top: 50%;
+    right: 2%;
+    /* Ajusta el espacio desde el borde derecho */
+    transform: translateY(-50%);
+    /* Centra verticalmente */
+    display: flex;
+    flex-direction: column;
+    /* Muestra los indicadores en columna */
+    align-items: end;
+}
+
+.indicator {
+    width: 35px;
+    height: 35px;
+    margin: 5px 5px;
+    /* Ajusta el espacio vertical entre los indicadores */
+    background-color: transparent;
+    border: 0.5px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.indicator i {
+    font-size: 1.5em;
+    color: transparent;
+    transition: color 0.3s;
+}
+
+.indicator.selected {
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    border-color: white;
+}
+
+.indicator.selected i {
+    color: #fff;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    /* Distribuye el contenido en ambos lados */
+    align-items: center;
+    /* Centra verticalmente */
+    background-color: transparent;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    /* Asegura que el header esté por encima de otros elementos */
+}
+
+.header-buttons {
+    display: flex;
+}
+
+.header-button {
+    background-color: #fff;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.header-button:hover {
+    background-color: #ddd;
+}
