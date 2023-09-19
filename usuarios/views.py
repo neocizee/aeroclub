@@ -12,7 +12,7 @@ import os
 
 
 def home(request):
-    eventos = Eventos.objects.filter()
+    eventos = Eventos.objects.filter().order_by('-fecha_carga')
     return render(request, 'home.html', {
         'eventos': eventos
     })
@@ -84,7 +84,7 @@ def eventos_detail(request, evento_id):
         try:
             ##Este evento solo se podra actualizar por el usuario que la hizo
             eventos = get_object_or_404(Eventos, pk=evento_id, usuario=request.user)
-            form = EventosForm(request.POST, instance=eventos)
+            form = EventosForm(request.POST or None, request.FILES or None, instance=eventos)
             form.save()
             return redirect('eventos')
         except ValueError:

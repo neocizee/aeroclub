@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import date
 
 # Create your models here.
 class Eventos(models.Model):
@@ -13,6 +14,10 @@ class Eventos(models.Model):
 
     def __str__(self):
         return '[ Por ' + self.usuario.username + ' ] - ' + self.titulo
+    
+    def dias_restantes(self):
+        diasr = (self.fecha_evento.date() - date.today()).days
+        return diasr
     
 class Noticias(models.Model):
     titulo = models.CharField(max_length=100)

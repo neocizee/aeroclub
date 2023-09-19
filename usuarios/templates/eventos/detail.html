@@ -1,12 +1,13 @@
 
 
 {% extends "base.html" %}
+
 {% block content %}
 
     <h1>eventos detail</h1>
     {{eventos.titulo}}
     {{error}}
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{form.as_p}}
         <button>actualizar</button>
