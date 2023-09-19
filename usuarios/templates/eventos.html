@@ -1,0 +1,19 @@
+
+
+{% extends "base.html" %}
+{% block content %}
+
+    <ul>
+    {% for evento in eventos %}
+        <l1>
+            <l1><h1>{{evento.titulo}}</h1></li>
+            <l1>{{evento.desc}}</li>
+            <l1><img src=../{{evento.img}} height="64" width="64"></img></li>
+            <l1>{{evento.fecha_evento}}</li>
+            <l1>{{evento.fecha_carga}}</li>
+
+            <l1>{{evento.usuario}}</li>
+        </l1>
+    {% endfor %}    
+    </ul>
+{% endblock %}

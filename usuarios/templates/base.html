@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="{% static 'css/h_sty.css' %}"> -->
+    <title>Aeródromo Pergamino</title>
+</head>
+<body>
+    <ul>
+        <li><a href="/"><img src="{% static 'assets/logo.png' %}" alt="Logo" width="128"></img></a></l1>
+
+        {% if user.is_authenticated %}
+            <li>{{user.get_username}}</li>
+            <li><a href="/cerrar_sesion">Cerrar sesion</a></li>
+            <li><a href="/crear_evento">Crear evento</a> | <a href="/eventos">Eventos</a></li>
+
+        {% else %}
+            <li><a href="/iniciar_sesion">Iniciar sesion</a></li>
+            <li><a href="/registro">Registrarse</a></li>
+        {% endif %}
+      </ul>
+      
+    {% block content %}
+    {% endblock %}
+    
+    </body>
+</html>

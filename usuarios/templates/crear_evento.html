@@ -1,0 +1,17 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<h1>eventos</h1>
+
+{{error}}
+<form action="/crear_evento/" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <button>
+        crear
+    </button>
+</form>  
+
+{% endblock %}
