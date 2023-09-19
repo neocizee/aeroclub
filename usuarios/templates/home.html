@@ -7,8 +7,10 @@
     <l1>
         <l1><h1>{{evento.titulo}}</h1></li>
         <l1>{{evento.desc}}</li>
-        <l1><img src=../{{evento.img}} height="64" width="64"></img></li>
-        <l1>{{evento.fecha_evento}}</li>
+        {% if evento.img %}
+            <l1><img src="{{evento.img.url}}" height="64" width="64"></img></li>
+        {% endif %}
+        <l1>{{evento.fecha_evento|date:'j / m / y  h:i'}}</li>
         <l1>{{evento.usuario}}</li>
     </l1>
     {% endfor %}    

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <ul>
+    {% for evento in eventos %}
+        <l1>
+            <a href="{% url 'eventos_detail' evento.id %}">
+                <l1><h1>{{evento.titulo}}</h1></li>
+                <l1><h2>{{evento.desc}}</h2></li>
+                <l1><p><img src=../{{evento.img.url}} height="64" width="64"></p></img></li>
+                <p>fecha del evento: 
+                <l1>{{evento.fecha_evento}}</li></p>
+                    <p>fecha carga: 
+                <l1>{{evento.fecha_carga}}</li></p>
+                    <p><b>creado por:</b> 
+                <l1>{{evento.usuario}}</li></p>
+            </a>
+        </l1>
+        <br>
+    {% endfor %}    
+    </ul>
+{% endblock %}

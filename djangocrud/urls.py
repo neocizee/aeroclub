@@ -23,11 +23,15 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('registro/',  views.registro),
-    path('eventos/',  views.eventos, name='eventos'),
+    path('registro/',  views.registro, name='registro'),
     path('cerrar_sesion/',  views.cerrar_sesion, name='cerrar_sesion'),
     path('iniciar_sesion/',  views.iniciar_sesion, name='iniciar_sesion'),
-    path('crear_evento/',  views.crear_evento, name='crear_evento')
+    
+    path('eventos/',  views.eventos, name='eventos'),
+    path('eventos/crear/',  views.crear_evento, name='crear_evento'),
+    path('eventos/<int:evento_id>/',  views.eventos_detail, name='eventos_detail'),
+    path('eventos/<int:evento_id>/eliminar/',  views.eliminar_evento, name='eliminar_evento')
+    
     
      
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
