@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
+from PIL import Image
 
 # Create your models here.
 class Eventos(models.Model):
@@ -19,13 +20,31 @@ class Eventos(models.Model):
         diasr = (self.fecha_evento.date() - date.today()).days
         return diasr
     
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        img = Image.open(self.img.path)
+        if img.height > 1350 or img.width > 1350:
+            out_size = (1350, 1080)
+            img.thumbnail(out_size)
+            img.save(self.img.path)
+            
+            
 class Noticias(models.Model):
     titulo = models.CharField(max_length=100)
     desc = models.TextField(blank=True)
     img = models.ImageField(upload_to='imgs_noticias', null=True, blank=True)
     fecha_carga = models.DateTimeField(auto_now=True)
-    fecha_noticia = models.DateField(null=True)
     usuario = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     
     def __str__(self):
         return '[ Por ' + self.usuario.username + ' ] - ' + self.titulo 
+    
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        img = Image.open(self.img.path)
+        if img.height > 1080 or img.width > 1080:
+            out_size = (1080, 1080)
+            img.thumbnail(out_size)
+            img.save(self.img.path)

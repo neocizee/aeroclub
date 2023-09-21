@@ -1,0 +1,20 @@
+
+
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>noticias detail</h1>
+    {{noticias.titulo}}
+    {{error}}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button>actualizar</button>
+    </form>
+
+    <form action="{% url 'eliminar_noticia' noticias.id %}" method="POST">
+        {% csrf_token %}
+        <button>eliminar</button>
+    </form>
+{% endblock %}

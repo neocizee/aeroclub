@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <ul>
+    {% for noticia in noticias %}
+        <l1>
+            <a href="{% url 'noticias_detail' noticia.id %}">
+                <l1><h1>{{noticia.titulo}}</h1></li>
+                <l1><h2>{{noticia.desc}}</h2></li>
+                <l1><p><img src=../{{noticia.img.url}}></p></img></li>
+                <l1><p>fecha carga: {{noticia.fecha_carga}}</p></li>
+                <l1><p><b>creado por:</b>{{noticia.usuario}}</p></li>
+            </a>
+        </l1>
+        <br>
+    {% endfor %}    
+    </ul>
+{% endblock %}

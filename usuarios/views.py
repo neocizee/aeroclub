@@ -3,8 +3,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.db import IntegrityError
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
-from .forms import EventosForm
-from .models import Eventos
+from .forms import EventosForm, NoticiasForm
+from .models import Eventos, Noticias
 from django.contrib.auth.decorators import login_required
 from django import forms
 import os
@@ -12,9 +12,11 @@ import os
 
 
 def home(request):
-    eventos = Eventos.objects.filter().order_by('-fecha_carga')
+    eventos = Eventos.objects.all().order_by('-fecha_carga')
+    noticias = Noticias.objects.all().order_by('-fecha_carga')
     return render(request, 'home.html', {
-        'eventos': eventos
+        'eventos': eventos,
+        'noticias': noticias
     })
 
 
@@ -115,4 +117,61 @@ def crear_evento(request):
             n_evento.usuario_id = request.user.id
             n_evento.save()
             return redirect('eventos')
+
+
+
+
+
+
+@login_required
+def noticias(request):
+    noticias = Noticias.objects.all()
+    return render(request, 'noticias/main.html', {
+        'noticias': noticias
+    })
+    
+@login_required
+def noticias_detail(request, noticia_id):
+    if request.method == "GET":
+        noticias = get_object_or_404(Noticias, pk=noticia_id, usuario=request.user)
+        form = NoticiasForm(instance=noticias)
+        return render(request, 'noticias/detail.html', {
+            'noticias': noticias,
+            'form': form
+        })
+    else:
+        try:
+            ##Esta noticias solo se podra actualizar por el usuario que la hizo
+            noticias = get_object_or_404(Noticias, pk=noticia_id, usuario=request.user)
+            form = NoticiasForm(request.POST or None, request.FILES or None, instance=noticias)
+            form.save()
+            return redirect('noticias')
+        except ValueError:
+            print(request.POST)
+            return render(request, 'noticias/detail.html', {
+                'noticias': noticias,
+                'form': form,
+                'error': "Error actualizando la noticia"
+            })
+
+@login_required        
+def eliminar_noticia(request, noticia_id):
+    noticia = get_object_or_404(Noticias, pk=noticia_id, usuario=request.user)
+    if request.method == "POST":
+        noticia.delete()
+        return redirect('noticias')
+
+@login_required
+def crear_noticia(request):
+    if request.method == 'GET':
+        return render(request, 'noticias/crear.html', {
+            'form': NoticiasForm
+        })
+    else:
+        form = NoticiasForm(request.POST, request.FILES)
+        if form.is_valid():
+            n_noticia = form.save(commit=False)
+            n_noticia.usuario_id = request.user.id
+            n_noticia.save()
+            return redirect('noticias')
 

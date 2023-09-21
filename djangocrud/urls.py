@@ -30,8 +30,11 @@ urlpatterns = [
     path('eventos/',  views.eventos, name='eventos'),
     path('eventos/crear/',  views.crear_evento, name='crear_evento'),
     path('eventos/<int:evento_id>/',  views.eventos_detail, name='eventos_detail'),
-    path('eventos/<int:evento_id>/eliminar/',  views.eliminar_evento, name='eliminar_evento')
+    path('eventos/<int:evento_id>/eliminar/',  views.eliminar_evento, name='eliminar_evento'),
     
-    
+    path('noticias/',  views.noticias, name='noticias'),
+    path('noticias/crear/',  views.crear_noticia, name='crear_noticia'),
+    path('noticias/<int:noticia_id>/',  views.noticias_detail, name='noticias_detail'),
+    path('noticias/<int:noticia_id>/eliminar/',  views.eliminar_noticia, name='eliminar_noticia')
      
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

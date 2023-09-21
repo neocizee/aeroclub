@@ -2,29 +2,41 @@
 <!--{% load static %}-->
 
 {% block content %}
-<ul>
-    {% for evento in eventos %}
-    <l1>
-        <l1><h1>{{evento.titulo}}</h1></li>
 
+<h1>Eventos aeroclub</h1>
+
+{% for evento in eventos %}
+    <div>
+        <h1>{{evento.titulo}}</h1>
         {% if evento.img %}
-            <l1><img src="{{evento.img.url}}" height="64" width="64"></img></li>
+            <img src="{{evento.img.url}}" height="108" weight="135"></img>
         {% endif %}
-        
-        {% if evento.dias_restantes > 0 %}
-            <p><l1>Faltan {{evento.dias_restantes}} días.</l1></p>
-        {% elif evento.dias_restantes == 0 %}
-            <p>Es hoy.</p>
-        {% else %}
-            <p>Ya paso.</p>
+        <p>Descripción del evento: {{evento.desc}}</p>
+        <p>Ubicación: {{evento.ubicacion}}</p>
+        <p>Creado por: {{evento.usuario}}</p>
+        <div>
+            {% if evento.dias_restantes > 0 %}
+                <span>{{evento.dias_restantes}}</span> días.
+            {% elif evento.dias_restantes == 0 %}
+                <span>Es hoy.</span>
+            {% else %}
+                <span>Ya paso.</span>
+            {% endif %}
+        </div>
+    </div>
+{% endfor %} 
+
+<h1>Noticias aeroclub</h1>
+{% for noticia in noticias %}
+    <div>
+        <h1>{{noticia.titulo}}</h1>
+        {% if noticia.img %}
+            <img src="{{noticia.img.url}}" height="108" weight="108"></img>
         {% endif %}
+        <p>Descripción del evento: {{noticia.desc}}</p>
+        <p>Fecha de subida: {{noticia.fecha_carga}}</p>
+        <p>Creado por: {{noticia.usuario}}</p>
+    </div>
+{% endfor %} 
 
-        <p>descripcion: <l1>{{evento.desc}}</li></p>
-        <p>ubicacion: <l1>{{evento.ubicacion}}</li></p>
-        <p>creado por: <l1>{{evento.usuario}}</li></p>
-
-        
-    </l1>
-    {% endfor %}    
-</ul>
 {% endblock %}

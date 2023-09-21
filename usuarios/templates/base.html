@@ -20,7 +20,10 @@
                 <a href="{% url 'crear_evento' %}">Crear evento</a>
                 <a href="{% url 'eventos' %}">Eventos</a>
             </li>
-
+            <li>
+                <a href="{% url 'crear_noticia' %}">Crear noticia</a>
+                <a href="{% url 'noticias' %}">Noticias</a>
+            </li>
         {% else %}
             <li><a href="{% url 'iniciar_sesion' %}">Iniciar sesion</a></li>
             <li><a href="{% url 'registro' %}">Registrarse</a></li>

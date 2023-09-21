@@ -1,0 +1,18 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<h1>noticias</h1>
+
+{{error}}
+<form action="{% url 'crear_noticia' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{form.as_p}}
+
+    <button>
+        crear
+    </button>
+</form>  
+
+{% endblock %}

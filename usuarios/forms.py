@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Eventos
+from .models import Eventos, Noticias
 
 class EventosForm(ModelForm):
     class Meta:
@@ -17,3 +17,12 @@ class EventosForm(ModelForm):
             'fecha_evento': forms.TextInput(attrs={'type': 'date'})
         }
         
+class NoticiasForm(ModelForm):
+    class Meta:
+        model = Noticias
+        fields = ['titulo', 'desc', 'img']
+        labels = {
+            'titulo': '',
+            'desc': '',
+            'img': ''
+        }
