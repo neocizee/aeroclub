@@ -1,18 +1,37 @@
 
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-<h1>noticias</h1>
 
-{{error}}
-<form action="{% url 'crear_noticia' %}" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
+    <div class="bg-gray-100 shadow-3xl rounded-xl grid place-items-center">
+        <a href="/" class="items-center flex justify-center">
+            <img class="w-1/4 mt-6"src="{% static 'assets/logonotxt.png' %}" alt="Logo"></img>
+        </a>
+        <h1>Crear noticia</h1>
+        {{error}}
 
-    {{form.as_p}}
-
-    <button>
-        crear
-    </button>
-</form>  
+    <form action="{% url 'crear_noticia' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}  
+        <div class="mb-6">
+            <label for="titulo" class="block mb-2 text-sm font-medium text-gray-900">Titulo</label>            
+            <input type="text" name="titulo" maxlength="100" required="" id="id_titulo">
+        </div>
+        <div class="mb-6">
+            <label for="titulo" class="block mb-2 text-sm font-medium text-gray-900">Descripcion completa</label>            
+            <textarea name="desc" cols="40" rows="10" id="id_desc"></textarea>
+        </div>
+        <div class="mb-6">
+            <label for="titulo" class="block mb-2 text-sm font-medium text-gray-900">Descripcion corta</label>            
+            <textarea name="desc_rapida" cols="40" rows="10" id="id_desc_rapida"></textarea>
+        </div>
+        <div class="mb-6">
+            <input type="file" accept="image/*" id="id_img">
+        </div>
+        <button class="text-white bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 block">
+            Crear
+        </button>
+    </form>  
+</div>
 
 {% endblock %}

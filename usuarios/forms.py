@@ -20,9 +20,10 @@ class EventosForm(ModelForm):
 class NoticiasForm(ModelForm):
     class Meta:
         model = Noticias
-        fields = ['titulo', 'desc', 'img']
+        fields = ['titulo', 'desc', 'desc_rapida', 'img']
         labels = {
             'titulo': '',
             'desc': '',
+            'desc_rapida': '',
             'img': ''
         }

@@ -1,20 +1,42 @@
 
 
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
+    <div class="bg-gray-100 shadow-3xl rounded-xl grid place-items-center">
+    <a href="/" class="items-center flex justify-center">
+      <img class="mt-5 first-letter: w-32"src="{% static 'assets/logonotxt.png' %}" alt="Logo"></img>
+    </a>
+    <h2 class="mb-5 text-center text-3xl font-bold">Editando noticia {{noticias.id}}</h2>
+        {{error}}
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-6">
+                <label for="titulo" class="block mb-2 text-sm font-medium text-gray-900">Titulo</label>            
+                <input type="text" name="titulo" value="{{noticias.titulo}}" maxlength="100" required="" id="id_titulo">
+            </div>
 
-    <h1>noticias detail</h1>
-    {{noticias.titulo}}
-    {{error}}
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button>actualizar</button>
-    </form>
+            <div class="mb-6">
+                <label for="titulo" class="block mb-2 text-sm font-medium text-gray-900">Descripcion completa</label>            
+                <textarea name="desc" cols="40" rows="10" id="id_desc">{{noticias.desc}}</textarea>
+            </div>
+            
+            <div class="mb-6">
+                <label for="titulo" class="block mb-2 text-sm font-medium text-gray-900">Descripcion corta</label>            
+                <textarea name="desc_rapida" maxlength="200" cols="80" rows="3" id="id_desc_rapida">{{noticias.desc_rapida}}</textarea>
+            </div>
+            <div class="mb-6">
+                {% if noticias.img %}
+                <input type="file" name="img" accept="image/*" value="{{noticias.img.url}}" id="id_img">
+                {% else %}
+                <input type="file" name="img" accept="image/*" value="" id="id_img">    
+                {% endif %}
+            </div>
+            <button class="text-white bg-blue-700 hover:bg-blue-800 w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 block">
+                Editar
+            </button>
+        </form>
 
-    <form action="{% url 'eliminar_noticia' noticias.id %}" method="POST">
-        {% csrf_token %}
-        <button>eliminar</button>
-    </form>
+</div>
 {% endblock %}

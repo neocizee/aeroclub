@@ -3,5 +3,18 @@
 		{
 			"path": "."
 		}
-	]
+	],
+	"settings": {
+		"emmet.includeLanguages": {
+			"django-html": "html",
+	   },
+	   "editor.quickSuggestions": {
+		"strings": "on"
+	  },
+	   "files.associations": {
+		"*.css": "tailwindcss"
+	  }
+	  
+	}
+	
 }

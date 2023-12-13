@@ -12,13 +12,16 @@ import os
 
 
 def home(request):
-    eventos = Eventos.objects.all().order_by('-fecha_carga')
-    noticias = Noticias.objects.all().order_by('-fecha_carga')
+    eventos = Eventos.objects.all().order_by('-fecha_carga')[:3]
+    noticias = Noticias.objects.all().order_by('-fecha_carga')[:3]
     return render(request, 'home.html', {
         'eventos': eventos,
         'noticias': noticias
     })
 
+def desarrollo(request):
+    return render(request, 'endesarrollo.html', {
+    })
 
 def registro(request):
     if request.method == "GET":
@@ -26,6 +29,7 @@ def registro(request):
             'form': UserCreationForm
         })
     else:
+        print(request)
         if request.POST['password1'] == request.POST['password2']:
             try:
                 usuario = User.objects.create_user(
@@ -147,13 +151,7 @@ def noticias_detail(request, noticia_id):
             form.save()
             return redirect('noticias')
         except ValueError:
-            print(request.POST)
-            return render(request, 'noticias/detail.html', {
-                'noticias': noticias,
-                'form': form,
-                'error': "Error actualizando la noticia"
-            })
-
+            return redirect('noticias')
 @login_required        
 def eliminar_noticia(request, noticia_id):
     noticia = get_object_or_404(Noticias, pk=noticia_id, usuario=request.user)

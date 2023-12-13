@@ -5,3 +5,8 @@ django-admin startproject nombre-del-proyecto
 cd myproject
 python manage.py runserver
 deactivate
+
+//node
+python manage.py tailwind start
+npm install flowbite
+npm install tw-elements
