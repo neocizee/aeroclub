@@ -3,3 +3,5 @@ webinspiracion.html
 webtest
 \!stuff/pdb.jpg
 \!stuff/letras.jpg
+/djangocrud/__pycache__
+/usuarios/__pycache__
